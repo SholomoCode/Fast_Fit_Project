@@ -9,11 +9,5 @@ namespace Fast_Fit_Final_Project.Controllers
         {
             return View();
         }
-
-        public IActionResult Add()
-        {
-            MaleShoeViewModel maleShoeViewModel = new MaleShoeViewModel();
-            return View(maleShoeViewModel);
-        }
     }
 }

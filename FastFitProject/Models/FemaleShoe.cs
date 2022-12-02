@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Fast_Fit_Final_Project.Models;
+using System;
 
 namespace Fast_Fit_Final_Project.Model
 {
