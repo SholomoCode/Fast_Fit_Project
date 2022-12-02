@@ -17,17 +17,17 @@ namespace FastFit_Final_Project.Data
 
         static List<Country> Countries;
 
-        static private List<FemaleShoe> TheUs = new List<FemaleShoe>();
-        static private List<FemaleShoe> TheUk = new List<FemaleShoe>();
-        static private List<FemaleShoe> TheEu = new List<FemaleShoe>();
-        static private List<FemaleShoe> Australia = new List<FemaleShoe>();
-        static private List<FemaleShoe> China = new List<FemaleShoe>();
-        static private List<FemaleShoe> Japan = new List<FemaleShoe>();
+        static private List<Shoe> TheUs = new List<Shoe>();
+        static private List<Shoe> TheUk = new List<Shoe>();
+        static private List<Shoe> TheEu = new List<Shoe>();
+        static private List<Shoe> Australia = new List<Shoe>();
+        static private List<Shoe> China = new List<Shoe>();
+        static private List<Shoe> Japan = new List<Shoe>();
 
 
 
  
-        static private object FindExistingObjects(List<FemaleShoe> countryList, string value) // this syntax migh be wrong
+        static private object FindExistingObjects(List<Shoe> countryList, string value) // this syntax migh be wrong
         {
             for (int i = 0; i < countryList.Count; i++)
             {
