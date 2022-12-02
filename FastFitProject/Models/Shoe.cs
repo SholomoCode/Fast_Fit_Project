@@ -3,19 +3,19 @@ using System;
 
 namespace Fast_Fit_Final_Project.Model
 {
-    public abstract class FemaleShoe
+    public abstract class Shoe
     {
         public int Id { get; }
         static private int nextId = 1;
         public string Value { get; set; }
 
-        public FemaleShoe()
+        public Shoe()
         {
             Id = nextId;
             nextId++;
         }
 
-        public FemaleShoe(string value) : this()
+        public Shoe(string value) : this()
         {
             Value = value;
 
@@ -28,7 +28,7 @@ namespace Fast_Fit_Final_Project.Model
 
         public override bool Equals(object obj)
         {
-            return obj is FemaleShoe female &&
+            return obj is Shoe female &&
                     Id == female.Id;
         }
 

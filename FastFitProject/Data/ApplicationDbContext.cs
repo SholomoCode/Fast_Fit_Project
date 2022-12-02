@@ -10,8 +10,8 @@ namespace FastFitProject.Data
     public class ApplicationDbContext : IdentityDbContext
     {
         public DbSet<Members> Members { get; set; }
-        public DbSet<Shoe> FemaleShoe { get; set; }
-        public DbSet<MaleShoe> MaleShoe { get; set; }
+        public DbSet<Shoe> Shoes { get; set; }
+        
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
