@@ -9,8 +9,8 @@ namespace FastFitProject.Data
 {
     public class ApplicationDbContext : IdentityDbContext
     {
-        public DbSet<Members> Members { get; set; }
-        public DbSet<Shoe> Shoes { get; set; }
+        public DbSet<Members> Members { get; set; } // might have to delete this line
+        //public DbSet<Shoe> Shoes { get; set; }
         
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
