@@ -1,25 +1,33 @@
 ﻿using Fast_Fit_Final_Project.Data;
 using Fast_Fit_Final_Project.Model;
 using Fast_Fit_Final_Project.ViewModels;
+using FastFitProject.Data;
+using FastFitProject.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
+//js not javascript
+using System.Linq;
 using System.Reflection;
 
 namespace Fast_Fit_Final_Project.Controllers
 {
     public class MembersController : Controller
     {
-        /*private FastFitDbContext context;
+        private ApplicationDbContext context;
 
-        public MembersController(FastFitDbContext dbContext)
+        public MembersController(ApplicationDbContext dbContext)
         {
             context = dbContext;
-        }*/
+        }
+
+
+       
+
 
         public IActionResult Index()
         {
-            List<Members> Member = new List<Members>(MemberData.GetAll());
-            return View();
+            List<Members> Members = context.Members.ToList();
+            return View(Members);
         }
 
         public IActionResult Add()
