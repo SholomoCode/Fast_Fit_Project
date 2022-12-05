@@ -1,4 +1,5 @@
-﻿using Fast_Fit_Final_Project.Models;
+﻿using Fast_Fit_Final_Project.Controllers;
+using Fast_Fit_Final_Project.Models;
 using System;
 
 namespace Fast_Fit_Final_Project.Model
@@ -12,6 +13,12 @@ namespace Fast_Fit_Final_Project.Model
 
         public double ShoeSize { get; set; }
         public MemberGender Gender { get; set; }
+
+
+        //justus
+        public SearchController Search { get; set; }
+        //justus
+        public int SearchId { get; set; }
 
         public Members()
         {
