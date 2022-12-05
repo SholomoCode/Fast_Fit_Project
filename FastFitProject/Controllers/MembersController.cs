@@ -13,29 +13,25 @@ namespace Fast_Fit_Final_Project.Controllers
 {
     public class MembersController : Controller
     {
-        /*private FastFitDbContext context;
+        private ApplicationDbContext context;
 
-        public MembersController(FastFitDbContext dbContext)
+        public MembersController(ApplicationDbContext dbContext)
         {
             context = dbContext;
-        }*/
+        }
 
 
-        //js  not javascript
-        private ApplicationDbContext context;
+       
 
 
         public IActionResult Index()
         {
-            List<Members> Member = new List<Members>(MemberData.GetAll());
-            return View();
+            List<Members> Members = context.Members.ToList();
+            return View(Members);
         }
 
         public IActionResult Add()
         {
-            //js not javaScript
-            List<Search> searches = context.Searches.ToList();
-
             MembersViewModel addMembersViewModel = new MembersViewModel();
 
             return View(addMembersViewModel);

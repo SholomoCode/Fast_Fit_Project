@@ -12,7 +12,7 @@ namespace FastFitProject.Models
 
         public int Id { get; set; }
 
-        public List<Members> members { get; set; }
+        public Members members { get; set; }
 
         public Search(string name)
         {
