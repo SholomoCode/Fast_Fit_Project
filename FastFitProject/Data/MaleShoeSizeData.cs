@@ -15,7 +15,7 @@ namespace FastFit_Final_Project.Data
 
         static bool IsDataLoaded;
 
-        static List<Country> Countries;
+        static List<Country> AllCountrySizes;
 
         static private List<Shoe> TheUs = new List<Shoe>();
         static private List<Shoe> TheUk = new List<Shoe>();
@@ -23,6 +23,51 @@ namespace FastFit_Final_Project.Data
         static private List<Shoe> Australia = new List<Shoe>();
         static private List<Shoe> China = new List<Shoe>();
         static private List<Shoe> Japan = new List<Shoe>();
+
+
+
+
+        static public List<Country> FindByValue(string value)
+        {
+
+            // load data, if not already loaded
+            LoadData();
+
+            List<Country> countriesSizes = new List<Country>();
+
+            for (int i = 0; i < AllCountrySizes.Count; i++)
+            {
+
+                if (AllCountrySizes[i].Us.ToString().ToLower().Contains(value.ToLower()))
+                {
+                    countriesSizes.Add(AllCountrySizes[i]);
+                }
+                else if (AllCountrySizes[i].Uk.ToString().ToLower().Contains(value.ToLower()))
+                {
+                    countriesSizes.Add(AllCountrySizes[i]);
+                }
+                else if (AllCountrySizes[i].Eu.ToString().ToLower().Contains(value.ToLower()))
+                {
+                    countriesSizes.Add(AllCountrySizes[i]);
+                }
+                else if (AllCountrySizes[i].Australia.ToString().ToLower().Contains(value.ToLower()))
+                {
+                    countriesSizes.Add(AllCountrySizes[i]);
+                }
+                else if (AllCountrySizes[i].China.ToString().ToLower().Contains(value.ToLower()))
+                {
+                    countriesSizes.Add(AllCountrySizes[i]);
+                }
+                else if (AllCountrySizes[i].Japan.ToString().ToLower().Contains(value.ToLower()))
+                {
+                    countriesSizes.Add(AllCountrySizes[i]);
+                }
+
+            }
+
+            return countriesSizes;
+        }
+
 
 
 
@@ -43,7 +88,7 @@ namespace FastFit_Final_Project.Data
 
         static private void LoadData()
         {
-            if (Countries == null || Countries.Count == 0)
+            if (AllCountrySizes == null || AllCountrySizes.Count == 0)
             {
                 IsDataLoaded = false;
             }
@@ -72,7 +117,7 @@ namespace FastFit_Final_Project.Data
             string[] headers = rows[0];
             rows.Remove(headers);
 
-            Countries = new List<Country>();
+            AllCountrySizes = new List<Country>();
 
 
             for (int i = 0; i < rows.Count; i++)
@@ -130,7 +175,7 @@ namespace FastFit_Final_Project.Data
 
                 Country newCountry = new Country(newSizeJapan, newSizeEu, newSizeUk, newSizeAu, newSizeChina, newSizeUs);
 
-                Countries.Add(newCountry);
+                AllCountrySizes.Add(newCountry);
             }
             IsDataLoaded = true;
         }
