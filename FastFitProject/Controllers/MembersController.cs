@@ -4,6 +4,7 @@ using Fast_Fit_Final_Project.ViewModels;
 using FastFitProject.Data;
 using FastFitProject.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 //js not javascript
 using System.Linq;
@@ -19,10 +20,6 @@ namespace Fast_Fit_Final_Project.Controllers
         {
             context = dbContext;
         }
-
-
-       
-
 
         public IActionResult Index()
         {
@@ -50,7 +47,8 @@ namespace Fast_Fit_Final_Project.Controllers
                     Gender = addMembersViewModel.Gender,
                 };
 
-                MemberData.Add(newMember);
+                context.Members.Add(newMember);
+                context.SaveChanges();
 
                 return Redirect("/Members");
             }
@@ -59,7 +57,7 @@ namespace Fast_Fit_Final_Project.Controllers
 
         public IActionResult Delete()
         {
-            ViewBag.members = MemberData.GetAll();
+            ViewBag.members = context.Members.ToList();
 
             return View();
         }
@@ -69,8 +67,10 @@ namespace Fast_Fit_Final_Project.Controllers
         {
             foreach (int memberId in memberIds)
             {
-                MemberData.Remove(memberId);
+                Members theMember = context.Members.Find(memberId);
+                context.Members.Remove(theMember);
             }
+            context.SaveChanges();
 
             return Redirect("/Members");
         }

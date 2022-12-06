@@ -3,3 +3,20 @@
 *@
 @{
 }
+
+<h1>Delete Member</h1>
+
+<form method="post">
+    @foreach (var mem in ViewBag.members)
+    {
+        <div class="form-group">
+            <label>
+                <span>@mem.Name</span>
+                <input type="checkbox" name="memberIds" value="@mem.Id" class="form-control">
+            </label>
+        </div>
+    }
+
+    <input type="submit" value="Delete Selected Members" class="btn btn-danger">
+
+</form>
