@@ -7,27 +7,17 @@ namespace Fast_Fit_Final_Project.Model
     public class Members
     {
         public int Id { get; set; }
-
-        public int nextId = 1;
         public string Name { get; set; }
         public int Age { get; set; }
 
         public double ShoeSize { get; set; }
         public MemberGender Gender { get; set; }
 
-
-        //justus
-        public SearchController Member { get; set; }
-        //justus
-        public int SearchId { get; set; }
-
         public Members()
         {
-            Id = nextId;
-            nextId++;
         }
 
-        public Members( string name, int age, double shoeSize, MemberGender gender) :this()
+        public Members( string name, int age, double shoeSize, MemberGender gender)
         {
             Name = name;
             Age = age;
