@@ -11,7 +11,6 @@ namespace FastFitProject.Data
     public class ApplicationDbContext : IdentityDbContext
     {
         public DbSet<Members> Members { get; set; } // might have to delete this line
-        //public DbSet<Shoe> Shoes { get; set; }
         
         //justus
         public DbSet<Search> Searches { get; set; }
