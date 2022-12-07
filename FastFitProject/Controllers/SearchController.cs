@@ -34,8 +34,6 @@ namespace Fast_Fit_Final_Project.Controllers
 
             return View(search);
 
-            /*  List<Search> searches = context.Searches.ToList();
-              return View(searches);*/
         }
 
 
@@ -48,12 +46,6 @@ namespace Fast_Fit_Final_Project.Controllers
 
             return View(addSearchViewModel);
         }
-
-
-
-
-
-
 
 
 
@@ -77,23 +69,6 @@ namespace Fast_Fit_Final_Project.Controllers
             }
             return View(addSearchViewModel);
 
-            /* if (ModelState.IsValid)
-             {
-                 Search newMember = new Search
-                 {
-                     Name = membersViewModel.Name
-                 };
-
-                 context.Searches.Add(newMember);
-                 context.SaveChanges();
-
-                 return Redirect("/Search");
-             }
-
-             return View("Index", membersViewModel);*/
         }
-
-
-
     }
 }
