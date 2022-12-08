@@ -25,25 +25,40 @@ else
     <table class="table">
         <tr>
             <th>
-                Id
-            </th>
-            <th>
                 Name
             </th>
             <th>
                 Age
             </th>
             <th>
-                Shoe Size
+                US Shoe Size
+            </th>
+            <th>
+                Shoe Type
+            </th>
+            <th>
+                Select Country Size
             </th>
         </tr>
         @foreach (var mem in Model)
         {
             <tr>
-                <td>@mem.Id</td>
                 <td>@mem.Name</td>
                 <td>@mem.Age</td>
                 <td>@mem.ShoeSize</td>
+                <td>@mem.Gender</td>
+                <td>
+                    <form asp-controller="Search" asp-action="Results" method="post">
+                    <select name="Country" id="myCountry">
+                        <option value="Uk">UK</option>
+                        <option value="Eu">EU</option>
+                        <option value="Australia">Australia</option>
+                        <option value="China">China</option>
+                        <option value="Japan">Japan</option>
+                        </select>
+                        <input type="submit" name="Submit" value="Submit">
+                    </form>
+                </td>
             </tr>
         }
     </table>
