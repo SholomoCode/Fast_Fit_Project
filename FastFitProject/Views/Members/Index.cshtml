@@ -44,6 +44,7 @@ else
                 <td>@mem.Name</td>
                 <td>@mem.Age</td>
                 <td>@mem.ShoeSize</td>
+                <td><a asp-controller="Members" asp-action="Edit" asp-route-id="@mem.Id">Edit Member</a></td>
             </tr>
         }
     </table>

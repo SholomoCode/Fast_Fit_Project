@@ -35,7 +35,7 @@ namespace Fast_Fit_Final_Project.Model
         public override bool Equals(object obj)
         {
             return obj is Members members &&
-                   Id == members.Id;
+                Id == members.Id;
         }
 
         public override int GetHashCode()

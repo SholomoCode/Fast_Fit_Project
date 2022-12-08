@@ -5,6 +5,7 @@ using FastFitProject.Data;
 using FastFitProject.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata;
 using System.Collections.Generic;
 //js not javascript
 using System.Linq;
@@ -71,6 +72,39 @@ namespace Fast_Fit_Final_Project.Controllers
                 context.Members.Remove(theMember);
             }
             context.SaveChanges();
+
+            return Redirect("/Members");
+        }
+
+        [HttpGet]
+        [Route("Members/Edit/{memberId}")]
+        public IActionResult Edit(int[] memberIds)
+        {
+            foreach(int memberId in memberIds)
+            {
+                Members editingMembers = MemberData.GetById(memberId);
+                ViewBag.memberToEdit = editingMembers;
+                ViewBag.title = "edit Member " + editingMembers.Name + "( id = " + editingMembers.Id + ")";
+            }
+            
+           
+            return View();
+        }
+
+
+        [HttpPost]
+        [Route("Members/Edit")]
+        public IActionResult SubmitEditMemberForm(MembersViewModel addMembersViewModel, int[] memberIds)
+        {foreach(int memberId in memberIds)
+            {
+                Members editingMembers = MemberData.GetById(memberId);
+                editingMembers.Name = addMembersViewModel.Name;
+                editingMembers.Age = addMembersViewModel.Age;
+                editingMembers.ShoeSize = addMembersViewModel.ShoeSize;
+                editingMembers.Gender = addMembersViewModel.Gender;
+
+            }
+
 
             return Redirect("/Members");
         }
