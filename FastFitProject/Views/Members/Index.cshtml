@@ -48,15 +48,15 @@ else
                 <td>@mem.ShoeSize</td>
                 <td>@mem.Gender</td>
                 <td>
-                    <form method="post">
-                    <select name="Country" id="Country">
+                    <form asp-controller="Search" asp-action="Results" method="post">
+                    <select name="Country" id="myCountry">
                         <option value="Uk">UK</option>
                         <option value="Eu">EU</option>
                         <option value="Australia">Australia</option>
                         <option value="China">China</option>
                         <option value="Japan">Japan</option>
                         </select>
-                        <input type="submit" value="Search Shoe Size">
+                        <input type="submit" name="Submit" value="Submit">
                     </form>
                 </td>
             </tr>
