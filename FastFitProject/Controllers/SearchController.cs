@@ -1,12 +1,14 @@
 ﻿using Fast_Fit_Final_Project.Data;
 using Fast_Fit_Final_Project.Model;
 using Fast_Fit_Final_Project.ViewModels;
+using FastFit_Final_Project.Data;
 using FastFitProject.Data;
 using FastFitProject.Models;
 using FastFitProject.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -27,73 +29,29 @@ namespace Fast_Fit_Final_Project.Controllers
         [HttpGet]
    public IActionResult Index()
         {
-
-            List<Search> search = context.Searches
-            .Include(s => s.members)
-            .ToList();
-
-            return View(search);
-
-            /*  List<Search> searches = context.Searches.ToList();
-              return View(searches);*/
+           
+            return View();
         }
 
-
-
-        [HttpGet]
-        public IActionResult Add()
-        {
-            List<Members> members = context.Members.ToList();
-            AddSearchViewModel addSearchViewModel = new AddSearchViewModel(members);
-
-            return View(addSearchViewModel);
-        }
-
-
-
-
-
-
-
-
-
-
-        [HttpPost]
-        public IActionResult ProcessCreateMembersForm(AddSearchViewModel addSearchViewModel)
+        public IActionResult Results(MembersViewModel membersViewModel, Members members)
         {
 
 
-            if (ModelState.IsValid)
+            if (membersViewModel.Gender == 0)
             {
-                Members theMember = context.Members.Find(addSearchViewModel.MembersId);
-                Search newSearch = new Search
-                {
-                    members = theMember
-                }; 
-
-                context.Searches.Add(newSearch);
-                context.SaveChanges();
-                return Redirect("/Search");
+                MaleShoeSizeData.FindByValue(ToString(members.ShoeSize));
             }
-            return View(addSearchViewModel);
-
-            /* if (ModelState.IsValid)
-             {
-                 Search newMember = new Search
-                 {
-                     Name = membersViewModel.Name
-                 };
-
-                 context.Searches.Add(newMember);
-                 context.SaveChanges();
-
-                 return Redirect("/Search");
-             }
-
-             return View("Index", membersViewModel);*/
+            else
+            {
+                FemaleShoeSizeData.FindByValue(ToString(members.ShoeSize));
+            }
+            return View("Index");
         }
 
 
-
+        private string ToString(double shoeSize)
+        {
+            return $"{shoeSize}";
+        }
     }
 }
