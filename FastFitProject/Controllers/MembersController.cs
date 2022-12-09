@@ -3,8 +3,10 @@ using Fast_Fit_Final_Project.Model;
 using Fast_Fit_Final_Project.ViewModels;
 using FastFitProject.Data;
 using FastFitProject.Models;
+using FastFitProject.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata;
 using System.Collections.Generic;
 //js not javascript
 using System.Linq;
@@ -73,6 +75,37 @@ namespace Fast_Fit_Final_Project.Controllers
             context.SaveChanges();
 
             return Redirect("/Members");
+        }
+
+        [HttpGet]
+        [Route("Members/Edit/{memberId}")]
+        public IActionResult Edit(int id)
+        {
+            Members theMember = context.Members.Find(id+1);
+            MemberDetailViewModel viewModel = new MemberDetailViewModel(theMember);
+
+            return View(viewModel);
+        }
+
+        [HttpPost]
+        [Route("Members/Edit")]
+        public IActionResult SubmitEditMemberForm(MemberDetailViewModel viewModel)
+        {
+            if (ModelState.IsValid)
+            {
+                Members editingMembers = context.Members.Find(viewModel.Id);
+                editingMembers.Name = viewModel.Name;
+                editingMembers.Age = viewModel.Age;
+                editingMembers.ShoeSize = viewModel.ShoeSize;
+                editingMembers.Gender = viewModel.Gender;
+
+                context.SaveChanges();
+
+
+                return Redirect("/Members");
+            }
+
+            return View(viewModel);
         }
     }
 }
