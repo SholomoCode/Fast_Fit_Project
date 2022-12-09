@@ -6,11 +6,11 @@
 
 
 
-@model Fast_Fit_Final_Project.ViewModels.MembersViewModel;
+@model FastFitProject.ViewModels.MemberDetailViewModel;
 
 <h1>Edit Member</h1>
 
-<form asp-controller="Members" asp-action="Edit" method="post">
+<form asp-controller="Members" asp-action="SubmitEditMemberForm" method="post">
     <div class="form-group">
         <label asp-for="Name"></label>
         <input asp-for="Name" />
@@ -31,11 +31,11 @@
 
     <div class="form-group">
         <label asp-for="Gender"></label>
-        <select asp-for="Gender" asp-items="@Model.MemberGenders"></select>
+        <select asp-for="Gender" asp-items="Model.MemberGenders"></select>
         <span asp-validation-for="Gender"></span>
     </div>
 
-    <input type="hidden" value="@ViewBag.memberToEdit.Id" name="memberId" />
+    <input type="hidden" value="@Model.Id" name="Id" />
     <input type="submit" value="Edit Member" />
 
 </form>

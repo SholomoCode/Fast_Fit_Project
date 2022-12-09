@@ -3,6 +3,7 @@ using Fast_Fit_Final_Project.Model;
 using Fast_Fit_Final_Project.ViewModels;
 using FastFitProject.Data;
 using FastFitProject.Models;
+using FastFitProject.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
@@ -78,35 +79,33 @@ namespace Fast_Fit_Final_Project.Controllers
 
         [HttpGet]
         [Route("Members/Edit/{memberId}")]
-        public IActionResult Edit(int[] memberIds)
+        public IActionResult Edit(int id)
         {
-            foreach(int memberId in memberIds)
-            {
-                Members editingMembers = MemberData.GetById(memberId);
-                ViewBag.memberToEdit = editingMembers;
-                ViewBag.title = "edit Member " + editingMembers.Name + "( id = " + editingMembers.Id + ")";
-            }
-            
-           
-            return View();
-        }
+            Members theMember = context.Members.Find(id+1);
+            MemberDetailViewModel viewModel = new MemberDetailViewModel(theMember);
 
+            return View(viewModel);
+        }
 
         [HttpPost]
         [Route("Members/Edit")]
-        public IActionResult SubmitEditMemberForm(MembersViewModel addMembersViewModel, int[] memberIds)
-        {foreach(int memberId in memberIds)
+        public IActionResult SubmitEditMemberForm(MemberDetailViewModel viewModel)
+        {
+            if (ModelState.IsValid)
             {
-                Members editingMembers = MemberData.GetById(memberId);
-                editingMembers.Name = addMembersViewModel.Name;
-                editingMembers.Age = addMembersViewModel.Age;
-                editingMembers.ShoeSize = addMembersViewModel.ShoeSize;
-                editingMembers.Gender = addMembersViewModel.Gender;
+                Members editingMembers = context.Members.Find(viewModel.Id);
+                editingMembers.Name = viewModel.Name;
+                editingMembers.Age = viewModel.Age;
+                editingMembers.ShoeSize = viewModel.ShoeSize;
+                editingMembers.Gender = viewModel.Gender;
 
+                context.SaveChanges();
+
+
+                return Redirect("/Members");
             }
 
-
-            return Redirect("/Members");
+            return View(viewModel);
         }
     }
 }
