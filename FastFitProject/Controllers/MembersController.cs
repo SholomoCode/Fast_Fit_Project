@@ -107,5 +107,14 @@ namespace Fast_Fit_Final_Project.Controllers
 
             return View(viewModel);
         }
+
+
+        [HttpPost]
+        public IActionResult Result()
+        {
+            
+
+            return View();
+        }
     }
 }
