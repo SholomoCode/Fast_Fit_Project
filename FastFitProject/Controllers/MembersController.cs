@@ -14,6 +14,8 @@ using System.Collections.Generic;
 //js not javascript
 using System.Linq;
 using System.Reflection;
+using System.Reflection.Metadata;
+using System.Xml.Linq;
 
 namespace Fast_Fit_Final_Project.Controllers
 {
@@ -113,17 +115,21 @@ namespace Fast_Fit_Final_Project.Controllers
 
 
         [HttpPost]
-        public IActionResult Result(Members members)
+        public IActionResult Result(Members members, string countryName)
         {
+            List<Country> members1;
+            countryName = "Uk";
+            //value = members.ShoeSize;
+
             if (members.Gender == 0) //0 = Male
             {
-                //MaleShoeSizeData.FindByValue(members.ShoeSize);
-                ViewBag.newShoeSize = MaleShoeSizeData.FindByValue(members.ShoeSize);
-
+                members1 = MaleShoeSizeData.Find(members.ShoeSize, countryName);
+                ViewBag.newShoeSize = members1;
             }
             else
             {
-                ViewBag.newShoeSize = FemaleShoeSizeData.FindByValue(members.ShoeSize);
+                members1 = FemaleShoeSizeData.FindByValue(members.ShoeSize);
+                ViewBag.newShoeSize = members1;
             }
 
             return View();

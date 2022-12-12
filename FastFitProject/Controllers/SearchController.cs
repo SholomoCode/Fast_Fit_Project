@@ -33,7 +33,7 @@ namespace Fast_Fit_Final_Project.Controllers
             return View();
         }
 
-        public IActionResult Results(MembersViewModel membersViewModel, Members members)
+      /*  public IActionResult Results(MembersViewModel membersViewModel, Members members)
         {
 
 
@@ -46,7 +46,7 @@ namespace Fast_Fit_Final_Project.Controllers
                 FemaleShoeSizeData.FindByValue(members.ShoeSize);
             }
             return View("Index");
-        }
+        }*/
 
 
        

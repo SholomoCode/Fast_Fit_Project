@@ -3,6 +3,7 @@ using Fast_Fit_Final_Project.Models;
 using FastFitProject.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Common;
 using System.IO;
 using System.Text;
 
@@ -25,6 +26,64 @@ namespace FastFit_Final_Project.Data
         static private List<Shoe> Japan = new List<Shoe>();
 
 
+
+        static public List<Country> Find(string value, string countryName)
+        {
+
+            List<Country> countryList = new List<Country>();
+
+            if(countryName != null)
+            {
+                countryList = FindByValue(value);
+                return countryList;
+            }
+
+
+            for (int i = 0; i < AllCountrySizes.Count; i++)
+            {
+                Country country = AllCountrySizes[i];
+                string aValue = GetFieldValue(country, countryName);
+
+                if (aValue != null && aValue.ToLower().Contains(value.ToLower()))
+                {
+                    countryList.Add(country);
+                }
+            }
+
+            return countryList;
+        }
+
+
+        static public string GetFieldValue(Country country, string countryName)
+        {
+            string theValue;
+            if (countryName.Equals("Us"))
+            {
+                theValue = country.Us.ToString();
+            }
+            else if (countryName.Equals("Uk"))
+            {
+                theValue = country.Uk.ToString();
+            }
+            else if (countryName.Equals("Eu"))
+            {
+                theValue = country.Eu.ToString();
+            }
+            else if (countryName.Equals("Australia"))
+            {
+                theValue = country.Australia.ToString();
+            }
+            else if (countryName.Equals("China"))
+            {
+                theValue = country.China.ToString();
+            }
+            else
+            {
+                theValue = country.Japan.ToString();
+            }
+
+            return theValue;
+        }
 
 
         static public List<Country> FindByValue(string value)

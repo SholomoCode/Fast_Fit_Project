@@ -50,8 +50,8 @@ else
                 
                 <td>
                     <form asp-controller="Members" asp-action="Result" method="post">
-                    <select name="Country">
-                        <option value="Uk">UK</option>
+                    <select name="countryName">
+                        <option asp-for="Uk">UK</option>
                         <option value="Eu">EU</option>
                         <option value="Australia">Australia</option>
                         <option value="China">China</option>
