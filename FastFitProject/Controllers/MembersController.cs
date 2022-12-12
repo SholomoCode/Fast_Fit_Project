@@ -1,12 +1,15 @@
 ﻿using Fast_Fit_Final_Project.Data;
 using Fast_Fit_Final_Project.Model;
+using Fast_Fit_Final_Project.Models;
 using Fast_Fit_Final_Project.ViewModels;
+using FastFit_Final_Project.Data;
 using FastFitProject.Data;
 using FastFitProject.Models;
 using FastFitProject.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
+using System;
 using System.Collections.Generic;
 //js not javascript
 using System.Linq;
@@ -110,11 +113,22 @@ namespace Fast_Fit_Final_Project.Controllers
 
 
         [HttpPost]
-        public IActionResult Result()
+        public IActionResult Result(Members members)
         {
-            
+            if (members.Gender == 0) //0 = Male
+            {
+                //MaleShoeSizeData.FindByValue(members.ShoeSize);
+                ViewBag.newShoeSize = MaleShoeSizeData.FindByValue(members.ShoeSize);
+
+            }
+            else
+            {
+                ViewBag.newShoeSize = FemaleShoeSizeData.FindByValue(members.ShoeSize);
+            }
 
             return View();
         }
+
+        
     }
 }

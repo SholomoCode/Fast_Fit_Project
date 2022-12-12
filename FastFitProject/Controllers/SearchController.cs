@@ -39,19 +39,16 @@ namespace Fast_Fit_Final_Project.Controllers
 
             if (membersViewModel.Gender == 0)
             {
-                MaleShoeSizeData.FindByValue(ToString(members.ShoeSize));
+                MaleShoeSizeData.FindByValue(members.ShoeSize);
             }
             else
             {
-                FemaleShoeSizeData.FindByValue(ToString(members.ShoeSize));
+                FemaleShoeSizeData.FindByValue(members.ShoeSize);
             }
             return View("Index");
         }
 
 
-        private string ToString(double shoeSize)
-        {
-            return $"{shoeSize}";
-        }
+       
     }
 }

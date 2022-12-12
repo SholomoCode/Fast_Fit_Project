@@ -11,14 +11,14 @@ namespace Fast_Fit_Final_Project.Model
         public string Name { get; set; }
         public int Age { get; set; }
 
-        public double ShoeSize { get; set; }
+        public string ShoeSize { get; set; }
         public MemberGender Gender { get; set; }
 
         public Members()
         {
         }
 
-        public Members( string name, int age, double shoeSize, MemberGender gender)
+        public Members( string name, int age, string shoeSize, MemberGender gender)
         {
             Name = name;
             Age = age;
