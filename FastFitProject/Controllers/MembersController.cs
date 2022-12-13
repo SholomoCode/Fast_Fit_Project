@@ -4,6 +4,7 @@ using Fast_Fit_Final_Project.ViewModels;
 using FastFitProject.Data;
 using FastFitProject.Models;
 using FastFitProject.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
@@ -14,6 +15,7 @@ using System.Reflection;
 
 namespace Fast_Fit_Final_Project.Controllers
 {
+    [Authorize]
     public class MembersController : Controller
     {
         private ApplicationDbContext context;
