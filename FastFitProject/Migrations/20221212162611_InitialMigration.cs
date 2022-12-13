@@ -55,7 +55,7 @@ namespace FastFitProject.Migrations
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     Name = table.Column<string>(nullable: true),
                     Age = table.Column<int>(nullable: false),
-                    ShoeSize = table.Column<double>(nullable: false),
+                    ShoeSize = table.Column<string>(nullable: true),
                     Gender = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
