@@ -25,16 +25,26 @@ namespace FastFit_Final_Project.Data
         static private List<Shoe> China = new List<Shoe>();
         static private List<Shoe> Japan = new List<Shoe>();
 
-
-
-        static public List<Country> Find(string value, string countryName)
+        static public List<Country> FindAll()
         {
+            LoadData();
+            return new List<Country>(AllCountrySizes);
+        }
+
+        static public List<Country> FindByCountryAndSize(string countryName, string size)
+        {
+            LoadData();
 
             List<Country> countryList = new List<Country>();
 
+            if(size.ToLower().Equals("all"))
+            {
+                return FindAll();
+            }
+
             if(countryName != null)
             {
-                countryList = FindByValue(value);
+                countryList = FindByValue(size);
                 return countryList;
             }
 
@@ -44,7 +54,7 @@ namespace FastFit_Final_Project.Data
                 Country country = AllCountrySizes[i];
                 string aValue = GetFieldValue(country, countryName);
 
-                if (aValue != null && aValue.ToLower().Contains(value.ToLower()))
+                if (aValue != null && aValue.ToLower().Equals(size.ToLower()))
                 {
                     countryList.Add(country);
                 }
@@ -57,23 +67,23 @@ namespace FastFit_Final_Project.Data
         static public string GetFieldValue(Country country, string countryName)
         {
             string theValue;
-            if (countryName.Equals("Us"))
+            if (countryName.Equals("us"))
             {
                 theValue = country.Us.ToString();
             }
-            else if (countryName.Equals("Uk"))
+            else if (countryName.Equals("uk"))
             {
                 theValue = country.Uk.ToString();
             }
-            else if (countryName.Equals("Eu"))
+            else if (countryName.Equals("eu"))
             {
                 theValue = country.Eu.ToString();
             }
-            else if (countryName.Equals("Australia"))
+            else if (countryName.Equals("australia"))
             {
                 theValue = country.Australia.ToString();
             }
-            else if (countryName.Equals("China"))
+            else if (countryName.Equals("china"))
             {
                 theValue = country.China.ToString();
             }
@@ -97,30 +107,30 @@ namespace FastFit_Final_Project.Data
             for (int i = 0; i < AllCountrySizes.Count; i++)
             {
 
-                if (AllCountrySizes[i].Us.ToString().ToLower().Contains(value.ToLower()))
+                if (AllCountrySizes[i].Us.ToString().Equals(value))
                 {
                     countriesSizes.Add(AllCountrySizes[i]);
                 }
-                else if (AllCountrySizes[i].Uk.ToString().ToLower().Contains(value.ToLower()))
+                /*else if (AllCountrySizes[i].Uk.ToString().ToLower().Equals(value.ToLower()))
                 {
                     countriesSizes.Add(AllCountrySizes[i]);
                 }
-                else if (AllCountrySizes[i].Eu.ToString().ToLower().Contains(value.ToLower()))
+                else if (AllCountrySizes[i].Eu.ToString().ToLower().Equals(value.ToLower()))
                 {
                     countriesSizes.Add(AllCountrySizes[i]);
                 }
-                else if (AllCountrySizes[i].Australia.ToString().ToLower().Contains(value.ToLower()))
+                else if (AllCountrySizes[i].Australia.ToString().ToLower().Equals(value.ToLower()))
                 {
                     countriesSizes.Add(AllCountrySizes[i]);
                 }
-                else if (AllCountrySizes[i].China.ToString().ToLower().Contains(value.ToLower()))
+                else if (AllCountrySizes[i].China.ToString().ToLower().Equals(value.ToLower()))
                 {
                     countriesSizes.Add(AllCountrySizes[i]);
                 }
-                else if (AllCountrySizes[i].Japan.ToString().ToLower().Contains(value.ToLower()))
+                else if (AllCountrySizes[i].Japan.ToString().ToLower().Equals(value.ToLower()))
                 {
                     countriesSizes.Add(AllCountrySizes[i]);
-                }
+                }*/
 
             }
 

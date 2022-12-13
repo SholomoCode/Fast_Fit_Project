@@ -113,26 +113,54 @@ namespace Fast_Fit_Final_Project.Controllers
             return View(viewModel);
         }
 
+        public IActionResult Result()
+        {
+            ViewBag.country = MaleShoeController.CountryChoices;
+            List<Members> MembersResult = context.Members.ToList();
+            //ViewBag.members = MembersResult.ToString();
+
+
+            return View(MembersResult);
+            //return View();
+        }
 
         [HttpPost]
-        public IActionResult Result(Members members, string countryName)
+        public IActionResult Result( string countryName, string size)
         {
             List<Country> members1;
-            countryName = "Uk";
-            //value = members.ShoeSize;
+            MembersViewModel members = new MembersViewModel();
+            //size = members.ShoeSize;
+
 
             if (members.Gender == 0) //0 = Male
             {
-                members1 = MaleShoeSizeData.Find(members.ShoeSize, countryName);
-                ViewBag.newShoeSize = members1;
+                if (!string.IsNullOrEmpty(size))
+                {
+                    members1 = MaleShoeSizeData.FindByCountryAndSize(countryName, size);
+                    ViewBag.newShoeSize = members1;
+                }
+                else if (size == null || countryName == null)
+                {
+                    members1 = MaleShoeSizeData.FindAll();
+                    ViewBag.newShoeSize = members1;
+                }
             }
             else
             {
-                members1 = FemaleShoeSizeData.FindByValue(members.ShoeSize);
-                ViewBag.newShoeSize = members1;
-            }
 
-            return View();
+              /*  if (countryName != null)
+                {
+                    members1 = FemaleShoeSizeData.FindByCountryAndSize(members.ShoeSize, countryName);
+                    ViewBag.newShoeSize = members1;
+                }
+                else
+                {
+                    members1 = MaleShoeSizeData.FindAll();
+                    ViewBag.newShoeSize = members1;
+                }*/
+            }
+            ViewBag.country = MaleShoeController.CountryChoices;
+            return View("Result");
         }
 
         
