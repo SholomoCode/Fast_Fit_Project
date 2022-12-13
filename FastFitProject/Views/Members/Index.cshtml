@@ -47,20 +47,10 @@ else
 
                <td><a asp-controller="Members" asp-action="Edit" asp-route-id="@mem.Id">Edit Member</a></td>
 
+
                 
-                <td>
-                    <form asp-controller="Search" asp-action="Results" method="post">
-                    <select name="Country" id="myCountry">
-                        <option value="Uk">UK</option>
-                        <option value="Eu">EU</option>
-                        <option value="Australia">Australia</option>
-                        <option value="China">China</option>
-                        <option value="Japan">Japan</option>
-                        </select>
-                        <input type="submit" name="Submit" value="Submit">
-                    </form>
-                </td>
             </tr>
         }
     </table>
-}
+
+}<p><a class="btn btn-primary" asp-controller="Members" asp-action="Result">Result for Members</a></p>
