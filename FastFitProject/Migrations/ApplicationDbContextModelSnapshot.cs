@@ -51,8 +51,8 @@ namespace FastFitProject.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<double>("ShoeSize")
-                        .HasColumnType("double");
+                    b.Property<string>("ShoeSize")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.HasKey("Id");
 

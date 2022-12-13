@@ -26,32 +26,19 @@ namespace Fast_Fit_Final_Project.Controllers
             context = dbContext;
         }
 
-        [HttpGet]
-   public IActionResult Index()
+
+
+      
+
+
+        public IActionResult Index()
         {
-           
             return View();
         }
 
-        public IActionResult Results(MembersViewModel membersViewModel, Members members)
-        {
+  
 
 
-            if (membersViewModel.Gender == 0)
-            {
-                MaleShoeSizeData.FindByValue(ToString(members.ShoeSize));
-            }
-            else
-            {
-                FemaleShoeSizeData.FindByValue(ToString(members.ShoeSize));
-            }
-            return View("Index");
-        }
-
-
-        private string ToString(double shoeSize)
-        {
-            return $"{shoeSize}";
-        }
+       
     }
 }

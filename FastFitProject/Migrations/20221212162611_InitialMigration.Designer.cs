@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FastFitProject.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20221206202152_InitialMigration")]
+    [Migration("20221212162611_InitialMigration")]
     partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -53,8 +53,8 @@ namespace FastFitProject.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<double>("ShoeSize")
-                        .HasColumnType("double");
+                    b.Property<string>("ShoeSize")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.HasKey("Id");
 
