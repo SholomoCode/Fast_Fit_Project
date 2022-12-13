@@ -6,6 +6,8 @@ using FastFit_Final_Project.Data;
 using FastFitProject.Data;
 using FastFitProject.Models;
 using FastFitProject.ViewModels;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
@@ -19,6 +21,7 @@ using System.Xml.Linq;
 
 namespace Fast_Fit_Final_Project.Controllers
 {
+    [Authorize]
     public class MembersController : Controller
     {
         private ApplicationDbContext context;
@@ -113,6 +116,10 @@ namespace Fast_Fit_Final_Project.Controllers
             return View(viewModel);
         }
 
+        public IActionResult MyControllerAction()
+        {
+            return View();
+        }
         public IActionResult Result()
         {
             ViewBag.country = MaleShoeController.CountryChoices;
