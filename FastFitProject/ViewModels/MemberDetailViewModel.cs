@@ -17,7 +17,7 @@ namespace FastFitProject.ViewModels
         public int Age { get; set; }
 
         [Required(ErrorMessage = "Shoe size is required.")]
-        [Range(1, 14)]
+        [Range(5, 14)]
         public string ShoeSize { get; set; }
 
         [Required(ErrorMessage = "Shoe type is required.")]
