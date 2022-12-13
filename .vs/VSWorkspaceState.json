@@ -1,15 +1,7 @@
 {
   "ExpandedNodes": [
     "",
-    "\\FastFitProject",
-    "\\FastFitProject\\Areas",
-    "\\FastFitProject\\Controllers",
-    "\\FastFitProject\\Data",
-    "\\FastFitProject\\Migrations",
-    "\\FastFitProject\\Models",
-    "\\FastFitProject\\Properties",
-    "\\FastFitProject\\Views",
-    "\\FastFitProject\\Views\\Shared"
+    "\\FastFitProject"
   ],
   "SelectedNode": "\\FastFitProject\\FastFitProject.sln",
   "PreviewInSolutionExplorer": false

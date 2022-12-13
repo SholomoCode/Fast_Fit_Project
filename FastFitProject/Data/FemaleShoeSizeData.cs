@@ -1,6 +1,7 @@
 ﻿using Fast_Fit_Final_Project.Model;
 using Fast_Fit_Final_Project.Models;
 using FastFitProject.Models;
+using Microsoft.AspNetCore.Mvc.Formatters;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -24,6 +25,12 @@ namespace FastFit_Final_Project.Data
         static private List<Shoe> China = new List<Shoe>();
         static private List<Shoe> Japan = new List<Shoe>();
 
+        static public List<Country> FindAll()
+        {
+            LoadData();
+
+            return new List<Country>(AllCountrySizes);
+        }
 
 
         static public List<Country> FindByValue(string value)
@@ -67,8 +74,69 @@ namespace FastFit_Final_Project.Data
             return countriesSizes;
         }
 
+        static public List<Country> FindByCountryAndSize(string countryName, string size)
+        {
+            //Load data if not already loaded
+            LoadData();
+            List<Country> countries = new List<Country>();
 
-        static private object FindExistingObjects(List<Shoe> countryList, string value) // this syntax migh be wrong
+            if (size != null)
+            {
+                return FindAll();
+            }
+
+            if (countryName != null)
+            {
+                countries = FindByValue(size);
+                return countries;
+            }
+
+            for (int i = 0; i < AllCountrySizes.Count; i++)
+            {
+                Country country = AllCountrySizes[i];
+                string aValue = GetFieldValue(country, countryName);
+
+                if (aValue!= null && aValue.ToLower().Contains(size.ToLower()))
+                {
+                    countries.Add(country);
+                }
+            }
+            return countries;
+        }
+
+
+        static public string GetFieldValue(Country country, string countryName)
+        {
+            string theValue;
+            if (countryName.Equals("Us"))
+            {
+                theValue = country.Us.ToString();
+            }
+            else if (countryName.Equals("Uk"))
+            {
+                theValue = country.Uk.ToString();
+            }
+            else if (countryName.Equals("Eu"))
+            {
+                theValue = country.Eu.ToString();
+            }
+            else if (countryName.Equals("Australia"))
+            {
+                theValue = country.Australia.ToString();
+            }
+            else if (countryName.Equals("China"))
+            {
+                theValue = country.China.ToString();
+            }
+            else
+            {
+                theValue = country.Japan.ToString();
+            }
+            return theValue;
+        }
+
+
+        static private object FindExistingObjects(List<Shoe> countryList, string value) 
         {
             for (int i = 0; i < countryList.Count; i++)
             {
@@ -129,13 +197,13 @@ namespace FastFit_Final_Project.Data
                 Us newSizeUs = (Us)FindExistingObjects(TheUs, inUsS5);
                 Uk newSizeUk = (Uk)FindExistingObjects(TheUk, inUk);
                 Eu newSizeEu = (Eu)FindExistingObjects(TheEu, inEu);
-                Australia newSizeAu = (Australia)FindExistingObjects(Australia, inAu); // fix these errors tomorrow
+                Australia newSizeAu = (Australia)FindExistingObjects(Australia, inAu); 
                 China newSizeChina = (China)FindExistingObjects(China, inCn);
                 Japan newSizeJapan = (Japan)FindExistingObjects(Japan, inJp);
                 if (newSizeUs == null)
                 {
                     newSizeUs = new Us(inUsS5);
-                    TheUs.Add(newSizeUs); // fix errors tomorrow.
+                    TheUs.Add(newSizeUs); 
                 }
 
                 if(newSizeUk == null)
@@ -190,7 +258,7 @@ namespace FastFit_Final_Project.Data
                 if ((c == countrySeparator && !isBetweenQuotes))
                 {
                     rowValues.Add(valueBuilder.ToString());
-                    valueBuilder.Clear();                                                            //THIS WHOLE CODE BLOCK!! Could be wrong.
+                    valueBuilder.Clear();                                                            
                 }
                 else
                 {
