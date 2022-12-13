@@ -19,5 +19,8 @@ namespace FastFitProject.Data
             : base(options)
         {
         }
+
+        //public DbSet<FastFitProject.Models.Members> Contact { get; set; }
+
     }
 }
