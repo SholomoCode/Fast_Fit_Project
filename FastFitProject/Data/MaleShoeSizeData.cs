@@ -48,7 +48,6 @@ namespace FastFit_Final_Project.Data
                 return countryList;
             }
 
-
             for (int i = 0; i < AllCountrySizes.Count; i++)
             {
                 Country country = AllCountrySizes[i];

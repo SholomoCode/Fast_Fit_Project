@@ -2,10 +2,11 @@
 <div class="container body-content">
 
 
+
      <form action="/members/result" method="post">
 
         <h2>Search for:</h2>
-
+        
         <p>
             @foreach (var country in ViewBag.country)
             {
@@ -36,12 +37,62 @@
     </form>
 
 
-    @if (ViewBag.newShoeSize != null)
+
+        @*@if (ViewBag.newFShoeSize != null)
+        {
+            @foreach (var size in ViewBag.newFShoeSize)
+            {
+                <table class="table">
+
+                    <tr>
+                        <th>
+                            Us
+                        </th>
+
+                        <th>
+                            Uk
+                        </th>
+
+                        <th>
+                            Eu
+                        </th>
+
+                        <th>
+                            Australia
+                        </th>
+
+                        <th>
+                            China
+                        </th>
+
+                        <th>
+                            Japan
+                        </th>
+
+
+                    </tr>
+                    <tr>
+                        <td>@size.Us</td>
+                        <td>@size.Uk</td>
+                        <td>@size.Eu</td>
+                        <td>@size.Australia</td>
+                        <td>@size.China</td>
+                        <td>@size.Japan</td>
+
+                    </tr>
+
+                </table>
+                <br />
+            }
+        }
+    }*@
+    
+        @if (ViewBag.newShoeSize != null)
     {
         @foreach (var size in ViewBag.newShoeSize)
         {
             <table class="table">
-               
+
                 <tr>
                     <th>
                         Us
@@ -67,7 +118,7 @@
                         Japan
                     </th>
 
-                    
+
                 </tr>
                 <tr>
                     <td>@size.Us</td>
@@ -82,8 +133,8 @@
             </table>
             <br />
         }
-    }
 
+    }
 
 
 </div>

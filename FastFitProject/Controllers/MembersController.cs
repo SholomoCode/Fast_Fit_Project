@@ -123,6 +123,7 @@ namespace Fast_Fit_Final_Project.Controllers
         public IActionResult Result()
         {
             ViewBag.country = MaleShoeController.CountryChoices;
+            ViewBag.countryF = FemaleShoeController.CountryChoices;
             List<Members> MembersResult = context.Members.ToList();
             //ViewBag.members = MembersResult.ToString();
 
@@ -135,38 +136,41 @@ namespace Fast_Fit_Final_Project.Controllers
         public IActionResult Result( string countryName, string size)
         {
             List<Country> members1;
-            MembersViewModel members = new MembersViewModel();
-            //size = members.ShoeSize;
+            List<Members> members = context.Members.ToList();
+            //Members members = new Members();
 
-
-            if (members.Gender == 0) //0 = Male
+            for (int i = 0; i < members.Count; i++)
             {
-                if (!string.IsNullOrEmpty(size))
+                if (members[i].Gender == MemberGender.Female) //0 = Male
                 {
-                    members1 = MaleShoeSizeData.FindByCountryAndSize(countryName, size);
-                    ViewBag.newShoeSize = members1;
-                }
-                else if (size == null || countryName == null)
-                {
-                    members1 = MaleShoeSizeData.FindAll();
-                    ViewBag.newShoeSize = members1;
-                }
-            }
-            else
-            {
-
-              /*  if (countryName != null)
-                {
-                    members1 = FemaleShoeSizeData.FindByCountryAndSize(members.ShoeSize, countryName);
-                    ViewBag.newShoeSize = members1;
+                    if (!string.IsNullOrEmpty(size))
+                    {
+                        members1 = MaleShoeSizeData.FindByCountryAndSize(countryName, size);
+                        ViewBag.newShoeSize = members1;
+                    }
+                    else if (size == null || countryName == null)
+                    {
+                        members1 = MaleShoeSizeData.FindAll();
+                        ViewBag.newShoeSize = members1;
+                    }
                 }
                 else
                 {
-                    members1 = MaleShoeSizeData.FindAll();
-                    ViewBag.newShoeSize = members1;
-                }*/
+                    if (!string.IsNullOrEmpty(size))
+                    {
+                        members1 = FemaleShoeSizeData.FindByCountryAndSize(countryName, size);
+                        ViewBag.newShoeSize = members1;
+                    }
+                    else if (size == null || countryName == null)
+                    {
+                        members1 = FemaleShoeSizeData.FindAll();
+                        ViewBag.newShoeSize = members1;
+                    }
+                }
             }
+            
             ViewBag.country = MaleShoeController.CountryChoices;
+            ViewBag.countryF = FemaleShoeController.CountryChoices;
             return View("Result");
         }
 
