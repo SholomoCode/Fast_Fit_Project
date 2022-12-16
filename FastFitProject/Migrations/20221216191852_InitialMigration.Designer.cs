@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FastFitProject.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20221216171024_InitialMigration")]
+    [Migration("20221216191852_InitialMigration")]
     partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -19,26 +19,7 @@ namespace FastFitProject.Migrations
                 .HasAnnotation("ProductVersion", "3.1.28")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
-            modelBuilder.Entity("FastFitProject.Models.Search", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("membersId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("membersId");
-
-                    b.ToTable("Searches");
-                });
-
-            modelBuilder.Entity("Fast_Fit_Final_Project.Model.Members", b =>
+            modelBuilder.Entity("FastFitProject.Models.Members", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -255,13 +236,6 @@ namespace FastFitProject.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
-                });
-
-            modelBuilder.Entity("FastFitProject.Models.Search", b =>
-                {
-                    b.HasOne("Fast_Fit_Final_Project.Model.Members", "members")
-                        .WithMany()
-                        .HasForeignKey("membersId");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

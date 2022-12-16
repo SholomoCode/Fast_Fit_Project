@@ -1,9 +1,9 @@
-﻿using Fast_Fit_Final_Project.Models;
-using FastFit_Final_Project.Data;
+﻿using FastFitProject.Models;
+using FastFitProject.Data;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 
-namespace Fast_Fit_Final_Project.Controllers
+namespace FastFitProject.Controllers
 {
     public class FemaleShoeController : Controller
     {

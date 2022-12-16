@@ -2,7 +2,7 @@
 using System;
 using System.Xml.Linq;
 
-namespace Fast_Fit_Final_Project.Models
+namespace FastFitProject.Models
 {
     public class Country
     {

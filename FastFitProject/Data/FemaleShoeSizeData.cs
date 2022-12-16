@@ -1,5 +1,4 @@
-﻿using Fast_Fit_Final_Project.Model;
-using Fast_Fit_Final_Project.Models;
+﻿
 using FastFitProject.Models;
 using Microsoft.AspNetCore.Mvc.Formatters;
 using System;
@@ -7,7 +6,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 
-namespace FastFit_Final_Project.Data
+namespace FastFitProject.Data
 {
     public class FemaleShoeSizeData
     {
