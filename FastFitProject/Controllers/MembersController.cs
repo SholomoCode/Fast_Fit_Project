@@ -82,17 +82,15 @@ namespace FastFitProject.Controllers
         }
 
         [HttpGet]
-        [Route("Members/Edit/{memberId}")]
         public IActionResult Edit(int id)
         {
-            Members theMember = context.Members.Find(id + 1);
+            Members theMember = context.Members.Find(id);
             MemberDetailViewModel viewModel = new MemberDetailViewModel(theMember);
 
             return View(viewModel);
         }
 
         [HttpPost]
-        [Route("Members/Edit")]
         public IActionResult SubmitEditMemberForm(MemberDetailViewModel viewModel)
         {
             if (ModelState.IsValid)
