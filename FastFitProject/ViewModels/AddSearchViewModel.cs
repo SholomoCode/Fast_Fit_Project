@@ -1,4 +1,4 @@
-﻿using Fast_Fit_Final_Project.Model;
+﻿using FastFitProject.Models;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Collections.Generic;
 

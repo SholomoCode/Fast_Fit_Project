@@ -1,5 +1,5 @@
-﻿using Fast_Fit_Final_Project.Model;
-using Fast_Fit_Final_Project.Models;
+﻿
+using FastFitProject.Models;
 
 namespace FastFitProject.Models
 {

@@ -1,12 +1,12 @@
-﻿using Fast_Fit_Final_Project.Model;
-using Fast_Fit_Final_Project.Models;
+﻿
+using FastFitProject.Models;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Net.Http.Headers;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 
-namespace Fast_Fit_Final_Project.ViewModels
+namespace FastFitProject.ViewModels
 {
     public class MembersViewModel
     {

@@ -1,7 +1,7 @@
-﻿using Fast_Fit_Final_Project.Models;
+﻿using FastFitProject.Models;
 using System;
 
-namespace Fast_Fit_Final_Project.Model
+namespace FastFitProject.Models
 {
     public abstract class Shoe
     {

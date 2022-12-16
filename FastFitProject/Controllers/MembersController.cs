@@ -1,11 +1,7 @@
-﻿using Fast_Fit_Final_Project.Data;
-using Fast_Fit_Final_Project.Model;
-using Fast_Fit_Final_Project.Models;
-using Fast_Fit_Final_Project.ViewModels;
-using FastFit_Final_Project.Data;
-using FastFitProject.Data;
+﻿
 using FastFitProject.Models;
 using FastFitProject.ViewModels;
+using FastFitProject.Data;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -19,7 +15,7 @@ using System.Reflection;
 using System.Reflection.Metadata;
 using System.Xml.Linq;
 
-namespace Fast_Fit_Final_Project.Controllers
+namespace FastFitProject.Controllers
 {
     [Authorize]
     public class MembersController : Controller
@@ -159,7 +155,6 @@ namespace Fast_Fit_Final_Project.Controllers
             
              
             ViewBag.country = MaleShoeController.CountryChoices;
-            ViewBag.countryF = FemaleShoeController.CountryChoices;
             return View(viewModel);
         }
 
