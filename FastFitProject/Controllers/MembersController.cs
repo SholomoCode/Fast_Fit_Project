@@ -85,7 +85,7 @@ namespace FastFitProject.Controllers
         [Route("Members/Edit/{memberId}")]
         public IActionResult Edit(int id)
         {
-            Members theMember = context.Members.Find(id+1);
+            Members theMember = context.Members.Find(id + 1);
             MemberDetailViewModel viewModel = new MemberDetailViewModel(theMember);
 
             return View(viewModel);
@@ -122,7 +122,7 @@ namespace FastFitProject.Controllers
         {
             List<Country> members1;
             Members theMember = context.Members.Find(id);
-           MemberDetailViewModel viewModel = new MemberDetailViewModel(theMember);
+           MembersViewModel viewModel = new MembersViewModel(theMember);
             string size = viewModel.ShoeSize;
 
 
