@@ -37,17 +37,16 @@ namespace FastFit_Final_Project.Data
 
             List<Country> countryList = new List<Country>();
 
-            if(size.ToLower().Equals("all"))
+            if (size.ToLower().Equals("all"))
             {
                 return FindAll();
             }
 
-            if(countryName != null)
+            if (countryName != null)
             {
                 countryList = FindByValue(size);
                 return countryList;
             }
-
 
             for (int i = 0; i < AllCountrySizes.Count; i++)
             {

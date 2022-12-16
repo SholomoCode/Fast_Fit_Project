@@ -33,6 +33,70 @@ namespace FastFit_Final_Project.Data
         }
 
 
+        static public List<Country> FindByCountryAndSize(string countryName, string size)
+        {
+            LoadData();
+
+            List<Country> countryList = new List<Country>();
+
+            if (size.ToLower().Equals("all"))
+            {
+                return FindAll();
+            }
+
+            if (countryName != null)
+            {
+                countryList = FindByValue(size);
+                return countryList;
+            }
+
+            for (int i = 0; i < AllCountrySizes.Count; i++)
+            {
+                Country country = AllCountrySizes[i];
+                string aValue = GetFieldValue(country, countryName);
+
+                if (aValue != null && aValue.ToLower().Equals(size.ToLower()))
+                {
+                    countryList.Add(country);
+                }
+            }
+
+            return countryList;
+        }
+
+
+        static public string GetFieldValue(Country country, string countryName)
+        {
+            string theValue;
+            if (countryName.Equals("us"))
+            {
+                theValue = country.Us.ToString();
+            }
+            else if (countryName.Equals("uk"))
+            {
+                theValue = country.Uk.ToString();
+            }
+            else if (countryName.Equals("eu"))
+            {
+                theValue = country.Eu.ToString();
+            }
+            else if (countryName.Equals("australia"))
+            {
+                theValue = country.Australia.ToString();
+            }
+            else if (countryName.Equals("china"))
+            {
+                theValue = country.China.ToString();
+            }
+            else
+            {
+                theValue = country.Japan.ToString();
+            }
+
+            return theValue;
+        }
+
+
         static public List<Country> FindByValue(string value)
         {
 
@@ -44,95 +108,34 @@ namespace FastFit_Final_Project.Data
             for (int i = 0; i < AllCountrySizes.Count; i++)
             {
 
-                if (AllCountrySizes[i].Us.ToString().ToLower().Contains(value.ToLower()))
+                if (AllCountrySizes[i].Us.ToString().Equals(value))
                 {
                     countriesSizes.Add(AllCountrySizes[i]);
                 }
-                else if (AllCountrySizes[i].Uk.ToString().ToLower().Contains(value.ToLower()))
+                /*else if (AllCountrySizes[i].Uk.ToString().ToLower().Equals(value.ToLower()))
                 {
                     countriesSizes.Add(AllCountrySizes[i]);
                 }
-                else if (AllCountrySizes[i].Eu.ToString().ToLower().Contains(value.ToLower()))
+                else if (AllCountrySizes[i].Eu.ToString().ToLower().Equals(value.ToLower()))
                 {
                     countriesSizes.Add(AllCountrySizes[i]);
                 }
-                else if (AllCountrySizes[i].Australia.ToString().ToLower().Contains(value.ToLower()))
+                else if (AllCountrySizes[i].Australia.ToString().ToLower().Equals(value.ToLower()))
                 {
                     countriesSizes.Add(AllCountrySizes[i]);
                 }
-                else if (AllCountrySizes[i].China.ToString().ToLower().Contains(value.ToLower()))
+                else if (AllCountrySizes[i].China.ToString().ToLower().Equals(value.ToLower()))
                 {
                     countriesSizes.Add(AllCountrySizes[i]);
                 }
-                else if (AllCountrySizes[i].Japan.ToString().ToLower().Contains(value.ToLower()))
+                else if (AllCountrySizes[i].Japan.ToString().ToLower().Equals(value.ToLower()))
                 {
                     countriesSizes.Add(AllCountrySizes[i]);
-                }
+                }*/
 
             }
 
             return countriesSizes;
-        }
-
-        static public List<Country> FindByCountryAndSize(string countryName, string size)
-        {
-            //Load data if not already loaded
-            LoadData();
-            List<Country> countries = new List<Country>();
-
-            if (size != null)
-            {
-                return FindAll();
-            }
-
-            if (countryName != null)
-            {
-                countries = FindByValue(size);
-                return countries;
-            }
-
-            for (int i = 0; i < AllCountrySizes.Count; i++)
-            {
-                Country country = AllCountrySizes[i];
-                string aValue = GetFieldValue(country, countryName);
-
-                if (aValue!= null && aValue.ToLower().Contains(size.ToLower()))
-                {
-                    countries.Add(country);
-                }
-            }
-            return countries;
-        }
-
-
-        static public string GetFieldValue(Country country, string countryName)
-        {
-            string theValue;
-            if (countryName.Equals("Us"))
-            {
-                theValue = country.Us.ToString();
-            }
-            else if (countryName.Equals("Uk"))
-            {
-                theValue = country.Uk.ToString();
-            }
-            else if (countryName.Equals("Eu"))
-            {
-                theValue = country.Eu.ToString();
-            }
-            else if (countryName.Equals("Australia"))
-            {
-                theValue = country.Australia.ToString();
-            }
-            else if (countryName.Equals("China"))
-            {
-                theValue = country.China.ToString();
-            }
-            else
-            {
-                theValue = country.Japan.ToString();
-            }
-            return theValue;
         }
 
 
@@ -184,17 +187,17 @@ namespace FastFit_Final_Project.Data
             AllCountrySizes = new List<Country>();
 
 
-            for (int i = 0; i < rows.Count; i++)
+            for (int i = 0; i < rows.Count - 1; i++)
             {
                 string[] row = rows[i];
-                string inUsS5 = row[0];
+                string inUs = row[0];
                 string inUk = row[1];
                 string inEu = row[2];
                 string inAu = row[3];
                 string inCn = row[4];
                 string inJp = row[5];
 
-                Us newSizeUs = (Us)FindExistingObjects(TheUs, inUsS5);
+                Us newSizeUs = (Us)FindExistingObjects(TheUs, inUs);
                 Uk newSizeUk = (Uk)FindExistingObjects(TheUk, inUk);
                 Eu newSizeEu = (Eu)FindExistingObjects(TheEu, inEu);
                 Australia newSizeAu = (Australia)FindExistingObjects(Australia, inAu); 
@@ -202,7 +205,7 @@ namespace FastFit_Final_Project.Data
                 Japan newSizeJapan = (Japan)FindExistingObjects(Japan, inJp);
                 if (newSizeUs == null)
                 {
-                    newSizeUs = new Us(inUsS5);
+                    newSizeUs = new Us(inUs);
                     TheUs.Add(newSizeUs); 
                 }
 

@@ -120,54 +120,47 @@ namespace Fast_Fit_Final_Project.Controllers
         {
             return View();
         }
-        public IActionResult Result()
-        {
-            ViewBag.country = MaleShoeController.CountryChoices;
-            List<Members> MembersResult = context.Members.ToList();
-            //ViewBag.members = MembersResult.ToString();
 
 
-            return View(MembersResult);
-            //return View();
-        }
-
-        [HttpPost]
-        public IActionResult Result( string countryName, string size)
+        public IActionResult Result(int id, string countryName = "us")
         {
             List<Country> members1;
-            MembersViewModel members = new MembersViewModel();
-            //size = members.ShoeSize;
+            Members theMember = context.Members.Find(id);
+           MemberDetailViewModel viewModel = new MemberDetailViewModel(theMember);
+            string size = viewModel.ShoeSize;
 
 
-            if (members.Gender == 0) //0 = Male
-            {
-                if (!string.IsNullOrEmpty(size))
+                if (theMember.Gender.ToString() == "Male") //0 = Male
                 {
-                    members1 = MaleShoeSizeData.FindByCountryAndSize(countryName, size);
-                    ViewBag.newShoeSize = members1;
-                }
-                else if (size == null || countryName == null)
-                {
-                    members1 = MaleShoeSizeData.FindAll();
-                    ViewBag.newShoeSize = members1;
-                }
-            }
-            else
-            {
-
-              /*  if (countryName != null)
-                {
-                    members1 = FemaleShoeSizeData.FindByCountryAndSize(members.ShoeSize, countryName);
-                    ViewBag.newShoeSize = members1;
+                    if (!string.IsNullOrEmpty(size))
+                    {
+                        members1 = MaleShoeSizeData.FindByCountryAndSize(countryName, size);
+                        ViewBag.newShoeSize = members1;
+                    }
+                    else if (size == null || countryName == null)
+                    {
+                        members1 = MaleShoeSizeData.FindAll();
+                        ViewBag.newShoeSize = members1;
+                    }
                 }
                 else
                 {
-                    members1 = MaleShoeSizeData.FindAll();
-                    ViewBag.newShoeSize = members1;
-                }*/
-            }
+                    if (!string.IsNullOrEmpty(size))
+                    {
+                        members1 = FemaleShoeSizeData.FindByCountryAndSize(countryName, size);
+                        ViewBag.newShoeSize = members1;
+                    }
+                    else if (size == null || countryName == null)
+                    {
+                        members1 = FemaleShoeSizeData.FindAll();
+                        ViewBag.newShoeSize = members1;
+                    }
+                }
+            
+             
             ViewBag.country = MaleShoeController.CountryChoices;
-            return View("Result");
+            ViewBag.countryF = FemaleShoeController.CountryChoices;
+            return View(viewModel);
         }
 
         

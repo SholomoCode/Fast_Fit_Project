@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FastFitProject.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20221213223742_initialMigration")]
-    partial class initialMigration
+    [Migration("20221216171024_InitialMigration")]
+    partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

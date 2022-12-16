@@ -1,90 +1,61 @@
-﻿
+﻿@model FastFitProject.ViewModels.MemberDetailViewModel;
+
 <div class="container body-content">
-
-
-     <form action="/members/result" method="post">
-
-        <h2>Search for:</h2>
-
-        <p>
-            @foreach (var country in ViewBag.country)
-            {
-                <span>
-                    <input type="radio" name="countryName" id="@country.Key" value="@country.Key" checked="@country.Key == 'all'" >
-                        <label for="@country.Key">@country.Value</label>
-                    
-                </span>
-            }
-
-        </p>
-        @if (Model != null)
-        {
-                <p>
-            <label for="size">Members size:</label>
-            <select type="text" name="size" id="size">
-                @foreach (var mem in Model){
-                        <option value="@mem.ShoeSize">@mem.Name</option>
-                }
-            </select>
-
-        </p>
-            <input type="submit" value="Search" />
-        }
-
-       
-
-    </form>
-
-
-    @if (ViewBag.newShoeSize != null)
+   
+    <h1>@Model.Name</h1>
+        @if (ViewBag.newShoeSize != null)
     {
         @foreach (var size in ViewBag.newShoeSize)
         {
+
             <table class="table">
-               
-                <tr>
-                    <th>
-                        Us
-                    </th>
+                <th>Shoe Sizes</th>
 
-                    <th>
-                        Uk
-                    </th>
+                <td>
 
-                    <th>
-                        Eu
-                    </th>
+                    <tr>
+                        <th>
+                            Us
+                        </th>
 
-                    <th>
-                        Australia
-                    </th>
+                        <th>
+                            Uk
+                        </th>
 
-                    <th>
-                        China
-                    </th>
+                        <th>
+                            Eu
+                        </th>
 
-                    <th>
-                        Japan
-                    </th>
+                        <th>
+                            Australia
+                        </th>
 
-                    
-                </tr>
-                <tr>
-                    <td>@size.Us</td>
-                    <td>@size.Uk</td>
-                    <td>@size.Eu</td>
-                    <td>@size.Australia</td>
-                    <td>@size.China</td>
-                    <td>@size.Japan</td>
+                        <th>
+                            China
+                        </th>
 
-                </tr>
+                        <th>
+                            Japan
+                        </th>
+
+
+                    </tr>
+                    <tr>
+                        <td>@size.Us</td>
+                        <td>@size.Uk</td>
+                        <td>@size.Eu</td>
+                        <td>@size.Australia</td>
+                        <td>@size.China</td>
+                        <td>@size.Japan</td>
+
+                    </tr>
+
+                </td>
 
             </table>
             <br />
         }
     }
-
-
 
 </div>
 
