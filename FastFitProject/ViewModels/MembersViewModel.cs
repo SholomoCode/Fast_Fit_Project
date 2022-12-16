@@ -5,6 +5,7 @@ using Microsoft.Net.Http.Headers;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
+
 namespace Fast_Fit_Final_Project.ViewModels
 {
     public class MembersViewModel

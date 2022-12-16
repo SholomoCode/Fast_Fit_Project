@@ -120,28 +120,17 @@ namespace Fast_Fit_Final_Project.Controllers
         {
             return View();
         }
-        public IActionResult Result()
-        {
-            ViewBag.country = MaleShoeController.CountryChoices;
-            ViewBag.countryF = FemaleShoeController.CountryChoices;
-            List<Members> MembersResult = context.Members.ToList();
-            //ViewBag.members = MembersResult.ToString();
 
 
-            return View(MembersResult);
-            //return View();
-        }
-
-        [HttpPost]
-        public IActionResult Result( string countryName, string size)
+        public IActionResult Result(int id, string countryName = "us")
         {
             List<Country> members1;
-            List<Members> members = context.Members.ToList();
-            //Members members = new Members();
+            Members theMember = context.Members.Find(id);
+           MemberDetailViewModel viewModel = new MemberDetailViewModel(theMember);
+            string size = viewModel.ShoeSize;
 
-            for (int i = 0; i < members.Count; i++)
-            {
-                if (members[i].Gender == MemberGender.Female) //0 = Male
+
+                if (theMember.Gender.ToString() == "Male") //0 = Male
                 {
                     if (!string.IsNullOrEmpty(size))
                     {
@@ -167,11 +156,11 @@ namespace Fast_Fit_Final_Project.Controllers
                         ViewBag.newShoeSize = members1;
                     }
                 }
-            }
             
+             
             ViewBag.country = MaleShoeController.CountryChoices;
             ViewBag.countryF = FemaleShoeController.CountryChoices;
-            return View("Result");
+            return View(viewModel);
         }
 
         
