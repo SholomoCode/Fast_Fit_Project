@@ -30,7 +30,7 @@ namespace Fast_Fit_Final_Project.Controllers
         {
             context = dbContext;
         }
-
+        [AllowAnonymous]
         public IActionResult Index()
         {
             List<Members> Members = context.Members.ToList();

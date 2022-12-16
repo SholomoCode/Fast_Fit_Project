@@ -7,16 +7,16 @@ namespace FastFitProject.Models
 {
     public class CustomAuthorizeAttribute : AuthorizeAttribute
     {
-    /*    protected override bool AuthorizeCore(HttpContext.User user)
+     /*   protected override bool AuthorizeCore(DbContext.Members user)
         {
             // Generally authenticated to the site
-            if (!DbContext.User.Identity.IsAuthenticated)
+            if (!DbContext.Members.Identity.IsAuthenticated)
             {
                 return false;
             }
 
             return true;
-        }
-*/
+        }*/
+
     }
 }
