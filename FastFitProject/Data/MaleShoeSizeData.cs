@@ -23,6 +23,7 @@ namespace FastFitProject.Data
         static private List<Shoe> Australia = new List<Shoe>();
         static private List<Shoe> China = new List<Shoe>();
         static private List<Shoe> Japan = new List<Shoe>();
+        static private List<Shoe> MaleFemaleDif = new List<Shoe>();
 
         static public List<Country> FindAll()
         {
@@ -85,9 +86,13 @@ namespace FastFitProject.Data
             {
                 theValue = country.China.ToString();
             }
-            else
+            else if (countryName.Equals("uswoman"))
             {
                 theValue = country.Japan.ToString();
+            }
+            else
+            {
+                theValue = country.USMaleFemaleDif.ToString();
             }
 
             return theValue;
@@ -196,6 +201,7 @@ namespace FastFitProject.Data
                 string inAu = row[3];
                 string inCn = row[4];
                 string inJp = row[5];
+                string usWoman = row[6];
 
                 Us newSizeUs = (Us)FindExistingObjects(TheUs, inUs);
                 Uk newSizeUk = (Uk)FindExistingObjects(TheUk, inUk);
@@ -203,6 +209,7 @@ namespace FastFitProject.Data
                 Australia newSizeAu = (Australia)FindExistingObjects(Australia, inAu);
                 China newSizeChina = (China)FindExistingObjects(China, inCn);
                 Japan newSizeJapan = (Japan)FindExistingObjects(Japan, inJp);
+                USMaleFemaleDif newUsWoman = (USMaleFemaleDif)FindExistingObjects(MaleFemaleDif, usWoman);
                 if (newSizeUs == null)
                 {
                     newSizeUs = new Us(inUs);
@@ -233,14 +240,19 @@ namespace FastFitProject.Data
                     China.Add(newSizeChina);
                 }
 
-
                 if (newSizeJapan == null)
                 {
                     newSizeJapan = new Japan(inJp);
                     Japan.Add(newSizeJapan);
                 }
 
-                Country newCountry = new Country(newSizeJapan, newSizeEu, newSizeUk, newSizeAu, newSizeChina, newSizeUs);
+                if (newUsWoman == null)
+                {
+                    newUsWoman = new USMaleFemaleDif(usWoman);
+                    MaleFemaleDif.Add(newUsWoman);
+                }
+
+                Country newCountry = new Country(newSizeJapan, newSizeEu, newSizeUk, newSizeAu, newSizeChina, newSizeUs, newUsWoman);
 
                 AllCountrySizes.Add(newCountry);
             }
