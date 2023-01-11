@@ -5,13 +5,13 @@
     <h1>@Model.Name</h1>
         @if (ViewBag.newShoeSize != null)
     {
+        <h1>Shoe Sizes</h1>
+
         @foreach (var size in ViewBag.newShoeSize)
         {
 
             <table class="table">
-                <th>Shoe Sizes</th>
-
-                <td>
+                
 
                     <tr>
                         <th>
@@ -38,9 +38,13 @@
                             Japan
                         </th>
 
-                        <th>
-                            US Woman
-                        </th>
+                        @if(Model.Gender == 0){
+                            <th>US Woman Shoe Type</th>
+                        }else
+                        {
+                            <th>US Man Shoe Type</th>
+                        }
+                        
 
 
                     </tr>
@@ -55,7 +59,7 @@
 
                     </tr>
 
-                </td>
+                
 
             </table>
             <br />
