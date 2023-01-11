@@ -14,7 +14,9 @@ namespace FastFitProject.Models
         public Uk Uk { get; set; }
         public Australia Australia { get; set; }
         public China China { get; set; }
-        public Us Us { get; set; }  
+        public Us Us { get; set; } 
+        
+        public USMaleFemaleDif USMaleFemaleDif { get; set; }
 
         
 
@@ -24,7 +26,7 @@ namespace FastFitProject.Models
             nextId++;
         }
 
-        public Country(Japan japan, Eu eu, Uk uk, Australia australia, China china, Us us) : this()
+        public Country(Japan japan, Eu eu, Uk uk, Australia australia, China china, Us us, USMaleFemaleDif usMaleFemaleDif) : this()
         {
             Japan = japan;
             Eu = eu;
@@ -32,6 +34,7 @@ namespace FastFitProject.Models
             Australia = australia;
             China = china;
             Us = us;
+            USMaleFemaleDif = usMaleFemaleDif;
         }
         
            
