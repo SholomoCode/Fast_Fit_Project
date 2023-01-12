@@ -124,7 +124,7 @@ namespace FastFitProject.Controllers
             string size = viewModel.ShoeSize;
 
 
-                if (theMember.Gender.ToString() == "Male") //0 = Male
+                if (theMember.Gender.ToString() == "Man") //0 = Man
                 {
                     if (!string.IsNullOrEmpty(size))
                     {

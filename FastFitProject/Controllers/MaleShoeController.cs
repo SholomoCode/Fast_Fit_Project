@@ -28,7 +28,7 @@ namespace FastFitProject.Controllers
         public IActionResult Size(string country, string size)
         {
             List<Country> countries = MaleShoeSizeData.FindAll();
-            ViewBag.title = "All Male Sizes";
+            ViewBag.title = "All Man Sizes";
             ViewBag.countries = countries;
             return View();
         }

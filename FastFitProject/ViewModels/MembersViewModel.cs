@@ -21,7 +21,7 @@ namespace FastFitProject.ViewModels
 
 
         [Required(ErrorMessage = "Shoe size is required.")]
-        [Range(5, 14)]
+        [Range(5.0, 14.0)]
         public string ShoeSize { get; set; }
 
         [Required(ErrorMessage = "Shoe type is required.")]
@@ -30,8 +30,8 @@ namespace FastFitProject.ViewModels
         public List<SelectListItem> MemberGenders { get; set; } = new List<SelectListItem>
         {
 
-            new SelectListItem(MemberGender.Male.ToString(), ((int)MemberGender.Male).ToString()),
-            new SelectListItem(MemberGender.Female.ToString(), ((int)MemberGender.Female).ToString())
+            new SelectListItem(MemberGender.Man.ToString(), ((int)MemberGender.Man).ToString()),
+            new SelectListItem(MemberGender.Woman.ToString(), ((int)MemberGender.Woman).ToString())
         };
 
         public MembersViewModel(Members theMember)
