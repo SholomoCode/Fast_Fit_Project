@@ -26,7 +26,7 @@ namespace FastFitProject.Controllers
         {
             context = dbContext;
         }
-        [AllowAnonymous]
+        
         public IActionResult Index()
         {
             List<Members> Members = context.Members.ToList();
